@@ -36,40 +36,22 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.app = void 0;
-var express = require("express");
-var bodyParser = require("body-parser");
-var data_source_1 = require("./data-source");
-var routes_1 = require("./routes");
-exports.app = express();
-//app.use(express.json());
-//app.use(express.urlencoded({ extended: true }));
-//app.get("/hello", function (req, res) {
-//  res.send("Hello World!");
-//});
-data_source_1.AppDataSource.initialize()
-    .then(function () { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        // create express app
-        exports.app.use(bodyParser.json());
-        // register express routes from defined application routes
-        routes_1.Routes.forEach(function (route) {
-            exports.app[route.method](route.route, function (req, res, next) {
-                var result = new route.controller()[route.action](req, res, next);
-                if (result instanceof Promise) {
-                    result.then(function (result) {
-                        return result !== null && result !== undefined
-                            ? res.send(result)
-                            : undefined;
-                    });
-                }
-                else if (result !== null && result !== undefined) {
-                    res.json(result);
-                }
+exports.GoogleController = void 0;
+var data_source_1 = require("../data-source");
+var Google_1 = require("../entity/Google");
+var GoogleController = /** @class */ (function () {
+    function GoogleController() {
+        this.googleRepository = data_source_1.AppDataSource.getRepository(Google_1.Google);
+    }
+    GoogleController.prototype.all = function (request, response, next) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                console.log("GOOGLE");
+                return [2 /*return*/, this.googleRepository.find()];
             });
         });
-        return [2 /*return*/];
-    });
-}); })
-    .catch(function (error) { return console.log(error); });
-//# sourceMappingURL=index.js.map
+    };
+    return GoogleController;
+}());
+exports.GoogleController = GoogleController;
+//# sourceMappingURL=GoogleController.js.map

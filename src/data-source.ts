@@ -1,5 +1,7 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
+import { Google } from "./entity/Google";
+import { Profile } from "./entity/Profile";
 import { User } from "./entity/User";
 
 export const AppDataSource = new DataSource({
@@ -8,10 +10,10 @@ export const AppDataSource = new DataSource({
   port: 5432,
   username: "dansuba",
   password: "123456",
-  database: "test",
+  database: "sso_users",
   synchronize: true,
   logging: false,
-  entities: [User],
+  entities: [User, Google, Profile],
   migrations: [],
   subscribers: [],
 });

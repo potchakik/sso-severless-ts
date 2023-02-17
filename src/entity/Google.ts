@@ -5,7 +5,7 @@ export class Google {
   //@PrimaryGeneratedColumn()
   //id: number
 
-  @Column()
+  @PrimaryGeneratedColumn()
   email: string;
 
   @Column()

@@ -58,7 +58,7 @@ var UserController = /** @class */ (function () {
                     case 0:
                         id = parseInt(request.params.id);
                         return [4 /*yield*/, this.userRepository.findOne({
-                                where: { id: id }
+                                where: { id: id },
                             })];
                     case 1:
                         user = _a.sent();
@@ -78,7 +78,7 @@ var UserController = /** @class */ (function () {
                 user = Object.assign(new User_1.User(), {
                     firstName: firstName,
                     lastName: lastName,
-                    age: age
+                    age: age,
                 });
                 return [2 /*return*/, this.userRepository.save(user)];
             });

@@ -3,6 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppDataSource = void 0;
 require("reflect-metadata");
 var typeorm_1 = require("typeorm");
+var Google_1 = require("./entity/Google");
+var Profile_1 = require("./entity/Profile");
 var User_1 = require("./entity/User");
 exports.AppDataSource = new typeorm_1.DataSource({
     type: "postgres",
@@ -10,10 +12,10 @@ exports.AppDataSource = new typeorm_1.DataSource({
     port: 5432,
     username: "dansuba",
     password: "123456",
-    database: "test",
+    database: "sso_users",
     synchronize: true,
     logging: false,
-    entities: [User_1.User],
+    entities: [User_1.User, Google_1.Google, Profile_1.Profile],
     migrations: [],
     subscribers: [],
 });
